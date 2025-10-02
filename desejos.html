@@ -1,0 +1,117 @@
+<!DOCTYPE html> 
+<!-- Define o tipo de documento como HTML5 -->
+<html lang="pt-BR"> <!-- Define o idioma principal da página como português do Brasil -->
+<head>
+  <meta charset="UTF-8"/> <!-- Define o padrão de caracteres como UTF-8, garantindo suporte a acentos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+  <!-- Garante que a página seja responsiva, adaptando-se a celulares e desktops -->
+
+  <title>MyILove - Desejos</title> <!-- Título exibido na aba do navegador -->
+
+  <link rel="stylesheet" href="style.css"/> 
+  <!-- Importa a folha de estilos externa para definir a aparência visual -->
+
+  <script src="https://unpkg.com/lucide@latest"></script> 
+  <!-- Biblioteca de ícones Lucide, usados em botões e menus -->
+</head>
+<body>
+  <!-- Estrutura principal da aplicação -->
+  <div class="container">
+    
+    <!-- Menu lateral fixo (Sidebar) -->
+    <nav class="sidebar">
+      <h2>MyILove 💕</h2> <!-- Nome e logo do sistema -->
+      <ul>
+        <!-- Cada item do menu é um link para uma seção diferente -->
+        <li><a href="index.html"><i data-lucide="home"></i> Início</a></li>
+        <li><a href="eventos.html"><i data-lucide="calendar"></i> Eventos</a></li>
+        <li><a href="desejos.html"><i data-lucide="heart"></i> Desejos</a></li>
+        <li><a href="anotacoes.html"><i data-lucide="file-text"></i> Anotações</a></li>
+        <li><a href="fotos.html"><i data-lucide="camera"></i> Fotos</a></li>
+        <li><a href="viagens.html"><i data-lucide="map"></i> Viagens</a></li>
+        <li><a href="realizadas.html"><i data-lucide="check-circle"></i> Realizadas</a></li>
+        <li><a href="config.html"><i data-lucide="settings"></i> Configurações</a></li>
+      </ul>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="content">
+      
+      <!-- Cabeçalho da página de desejos -->
+      <div class="page-header">
+        <h2>Lista de Desejos 💖</h2> <!-- Título da seção -->
+        <!-- Botão para abrir modal e cadastrar novo desejo -->
+        <button class="add-btn" onclick="openWishModal()">
+          <i data-lucide="plus"></i> Adicionar Desejo
+        </button>
+      </div>
+
+      <!-- Filtros por categorias de desejos -->
+      <div class="wish-categories">
+        <div class="category-filter">
+          <!-- Cada botão filtra a lista de desejos de acordo com a categoria -->
+          <button class="filter-btn active" onclick="filterWishes('all')">Todos</button>
+          <button class="filter-btn" onclick="filterWishes('places')">Lugares</button>
+          <button class="filter-btn" onclick="filterWishes('experiences')">Experiências</button>
+          <button class="filter-btn" onclick="filterWishes('gifts')">Presentes</button>
+          <button class="filter-btn" onclick="filterWishes('goals')">Objetivos</button>
+        </div>
+      </div>
+
+      <!-- Área onde os desejos serão exibidos dinamicamente -->
+      <div class="wishes-grid" id="wishesGrid">
+        <!-- Mensagem inicial quando ainda não existem desejos cadastrados -->
+        <p class="empty-state">Nenhum desejo cadastrado. Que tal sonhar um pouco? ✨</p>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal (janela flutuante) para cadastrar novos desejos -->
+  <div id="wishModal" class="modal">
+    <div class="modal-content">
+      
+      <!-- Cabeçalho do modal -->
+      <div class="modal-header">
+        <h3>Novo Desejo</h3>
+        <!-- Botão "X" para fechar o modal -->
+        <span class="close" onclick="closeWishModal()">&times;</span>
+      </div>
+
+      <!-- Formulário de cadastro de desejo -->
+      <form id="wishForm">
+        <!-- Campo para o título do desejo -->
+        <input type="text" id="wishTitle" placeholder="O que vocês desejam?" required>
+
+        <!-- Campo para descrição detalhada -->
+        <textarea id="wishDescription" placeholder="Descreva esse sonho..."></textarea>
+
+        <!-- Campo de seleção de categoria obrigatória -->
+        <select id="wishCategory" required>
+          <option value="">Categoria</option>
+          <option value="places">Lugares para visitar</option>
+          <option value="experiences">Experiências</option>
+          <option value="gifts">Presentes</option>
+          <option value="goals">Objetivos do casal</option>
+        </select>
+
+        <!-- Seleção da prioridade do desejo -->
+        <select id="wishPriority">
+          <option value="low">Baixa prioridade</option>
+          <option value="medium" selected>Média prioridade</option>
+          <option value="high">Alta prioridade</option>
+        </select>
+
+        <!-- Campo opcional para custo estimado -->
+        <input type="text" id="wishEstimate" placeholder="Estimativa de custo (opcional)">
+
+        <!-- Botão de envio do formulário -->
+        <button type="submit" class="submit-btn">Adicionar Desejo</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts responsáveis pela lógica do sistema -->
+  <script src="script.js"></script> <!-- Funções globais -->
+  <script src="desejos.js"></script> <!-- Funções específicas da página de desejos -->
+</body>
+</html>
